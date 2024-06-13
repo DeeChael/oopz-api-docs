@@ -158,3 +158,100 @@ GET: https://api.oopz.cn/client/v1/area/v1/detail/v1/info
     "code": "200"
 }
 ```
+
+## 获取域模板
+
+GET：https://api.oopz.cn/v1/area/getAreaModel
+
+无参数
+
+响应：
+
+```json
+{
+    "status": true,
+    "data": [ // 因为这边数据我觉得很好懂所以就不写注释了，毕竟我不是官方 doc，没必要面面俱到
+        {
+            "id": "01GY6MPEG5PDM92MN0Q1QCHPMI",
+            "name": "自己创建",
+            "desc": "独立完善或邀请好友共同创建特色频道",
+            "recommendTips": ""
+        },
+        {
+            "id": "01GY6MPEG4697PBDE5X8K14XNE",
+            "name": "深度玩家",
+            "desc": "语音与文字频道并行满足游戏社交需求",
+            "recommendTips": ""
+        },
+        {
+            "id": "01GX2TMKC1WGF5188EVDFQBBYJ",
+            "name": "游戏玩家",
+            "desc": "拥有多个语音频道便于即时交流",
+            "recommendTips": ""
+        },
+        {
+            "id": "01GY6MPEG5PDM92MN0PY5X44ZJ",
+            "name": "公会玩家",
+            "desc": "已搭建不同频道模板用于公会运营",
+            "recommendTips": ""
+        }
+    ],
+    "message": null,
+    "error": null,
+    "code": "200"
+}
+```
+
+## 创建域
+
+POST：https://api.oopz.cn/v1/area/createAreaByModel
+
+参数：
+
+```json
+{
+	"name": "", // 名称
+	"modelId": "" // 模板的 id，非必要建议直接使用 01GY6MPEG5PDM92MN0Q1QCHPMI 最为方便
+}
+```
+
+响应：
+
+```json
+{
+    "status": true,
+    "data": {
+        "area": "" // 创建好的域的 ID
+    },
+    "message": null,
+    "error": null,
+    "code": "200"
+}
+```
+
+## 修改域的头像
+
+PUT：https://api.oopz.cn/client/v1/area/v1/avatar
+
+参数：
+
+```json
+{
+	"area": "", // 域的 id
+	"path": "/area/avatar/20240613/8744ecd1298911efb78f92af0254bb47.webp", // 路径，估计必须使用官方的图床，但我没找到上传接口
+	"edit": false // 如果是修改应该要填 true，我这个响应是在创建域扒的
+}
+```
+
+响应：
+
+```json
+{
+	"status": true,
+	"data": true, // 是否成功
+	"message": null,
+	"error": null,
+	"code": "200"
+}
+```
+
